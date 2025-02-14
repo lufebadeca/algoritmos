@@ -78,7 +78,7 @@ Puedes probar estos algoritmos copiando el código en la consola del navegador o
 
 Autor
 
-[Tu Nombre] - Práctica de algoritmos en JavaScript.
+Luis Fernando Baldovino - Práctica de algoritmos en JavaScript.
 
 Licencia
 
