@@ -71,20 +71,20 @@ function IsPalindromo(){
     let noEspacios = minusculas.replaceAll(" ", "");
     console.log(noEspacios);
 
-    let reversa="";
-    for (let letra = 0; letra <= noEspacios.length-1; letra++) {
+    //let reversa="";
+    /*for (let letra = 0; letra <= noEspacios.length-1; letra++) {
         reversa =  noEspacios[letra] + reversa;
     }
-    console.log(`reversa: ${reversa}`);
+    console.log(`reversa: ${reversa}`);*/
 
     //separar cada letra, se convierte en Array
-    //let separar = noEspacios.split("");
-    //console.log(separar);
+    let separar = noEspacios.split("");
+    console.log(separar);
     //invertir el orden y volver a unir como string
-    //let reversa = separar.reverse();
-    //console.log(reversa);
-    //reversa = reversa.join("");
-    //console.log(reversa);
+    let reversa = separar.reverse();
+    console.log(reversa);
+    reversa = reversa.join("");
+    console.log(reversa);
 
     if (reversa === noEspacios) {
         console.log(`"${frase}" es un palíndromo`);
