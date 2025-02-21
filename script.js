@@ -61,9 +61,11 @@ function Fibonacci(){
 }
 
 
-function IsPalindromo(){
+function isPalindrome(){
 
-    let frase = prompt("Ingrese una frase");
+    const resultInput = document.getElementById("result");
+    const textInput = document.getElementById("text-input");
+    let frase = textInput.value;
     //minuscula
     let minusculas= frase.toLowerCase();
     console.log(minusculas);
@@ -86,14 +88,37 @@ function IsPalindromo(){
     reversa = reversa.join("");
     console.log(reversa);
 
-    if (reversa === noEspacios) {
+    if (reversa === ""){
+        resultInput.textContent = `Tu input está vacío, no es divertido.`;
+    }else if( reversa.length === 1){
+        resultIntextContent = `Solo introdujiste una letra, no es divertido.`;
+    }
+    else if (reversa === noEspacios) {
         console.log(`"${frase}" es un palíndromo`);
-        alert(`"${frase}" es un palíndromo`);
+        resultInput.textContent = `"${frase}" es un palíndromo! Qué otro palíndromo conoces?`;
+        resultInput.style.color= "green";
     }else{
         console.log(`"${frase}" no es un palíndromo`);
-        alert(`"${frase}" no es un palíndromo`);
+        resultInput.textContent = `"${frase}" no es un palíndromo. Prueba con otra frase.`;
+        resultInput.style.color= "red";
     }
     
+}
+
+function palindromeSuggest(){
+    let textInput = document.getElementById("text-input");
+    let resultInput = document.getElementById("result");
+
+    palindromes = [
+        "Anita lava la tina", "Somo o no somos", "Isaac no ronca asi", "amor a Roma",
+        "Sé verlas al revés", "Amo la paloma", "Luz azul", "Yo hago yoga hoy", "la ruta natural",
+        "dabale arroz a la zorra el Abad", "arepera", "arenera", "Salas", "rotor", "Radar"
+    ];
+
+    let randomNum = Math.floor(Math.random()* palindromes.length);
+
+    textInput.value = palindromes[randomNum];
+    resultInput.value="";
 }
 
 
@@ -137,3 +162,110 @@ function Factorial(){
 //isPalindromo()
 //adivinaNumero();
 //factorial()
+
+function draw() {
+
+    const subTitle = document.querySelector("#sub-title");
+    const title = document.querySelector("#title");
+    const alphabetBox = document.getElementById("alphabet-box");
+    const phraseDiv = document.getElementById("phrase-div");
+    const picture = document.querySelector(".hangman-pic");
+    let attempts = 0;
+
+    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+        'K', 'L', 'M', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        
+    const phrase = "el niño va a casa pronto".toUpperCase();
+    
+    //add event listener for alphabetBox to detect indivdual (child) letters
+    alphabetBox.addEventListener('click', checkPressedLetter);
+    
+    //fill alphabetBox with letters and add styles
+    for (const letter of alphabet) {
+        letterDiv = document.createElement("div");
+        letterDiv.textContent = letter;
+        letterDiv.classList.add("col");
+        letterDiv.classList.add("btn");
+        letterDiv.classList.add("btn-primary");
+        alphabetBox.appendChild(letterDiv);
+    }
+
+    function fillPhrase(){
+        for (const letter of phrase) {
+            letterDiv = document.createElement("div");
+            letterDiv.textContent = letter;
+            letterDiv.classList.add("hidden-letter");
+            if (letter===" "){ letterDiv.classList.add("blank-space"); }
+            phraseDiv.appendChild(letterDiv);
+        }
+    }
+
+    //if was found
+    function revealLetters(pressedLetter){
+
+        phraseDiv
+
+        for (const letter of phrase) {
+            letterDiv = document.getElementById("div");
+            letterDiv.textContent = letter;
+            letterDiv.classList.add("hidden-letter");
+            if (letter===" "){ letterDiv.classList.add("blank-space"); }
+            phraseDiv.appendChild(letterDiv);
+        }
+    }; 
+
+    function disableLetter(pressedLetter){
+
+        const childLettersHTML = document.getElementsByClassName("btn-primary");
+
+        for (let index = 0; index < childLettersHTML.length; index++) {
+            if (pressedLetter === childLettersHTML[index].textContent ){
+                childLettersHTML[index].classList.add("disabled");
+            }
+        }
+    }
+
+    const links = ["https://drive.google.com/file/d/1gD6fMD79gLoDNinLQmTSyHfUbXZWwm_e/view?usp=drive_link",
+        "https://drive.google.com/file/d/1hGveNfT1J-SGbG0G7qQ7MFZNrszf8QXH/view?usp=drive_link",
+        "https://drive.google.com/file/d/19S1O1SAC6cFidWBUjqMLuOKI8d--ekA3/view?usp=drive_link",
+        "https://drive.google.com/file/d/1HDnr6qKitQiRdoB3HVHQx5uDhrOIw5Ih/view?usp=drive_link",
+        "https://drive.google.com/file/d/1_Mo_VW86oCstmYpP6W14zdAu_ehSsVUw/view?usp=drive_link",
+        "https://drive.google.com/file/d/16_JaF3p0J8_7si16FVn1cElE8LiWvH0E/view?usp=drive_link",
+        "https://drive.google.com/file/d/1qqfowtnvza98LXFRTnhGvqcpQEiaMVMe/view?usp=drive_link",
+        "https://drive.google.com/file/d/10uuyftiPEiSsPok52gVwiS3EiMSHHi74/view?usp=drive_link"
+    ];
+
+    function checkPressedLetter(e){
+        pressedLetter = e.target.closest(".btn").textContent;
+
+        //if letter in phrase
+        if( phrase.includes(pressedLetter)  ){
+            disableLetter(pressedLetter);
+            
+        }else{
+            disableLetter(pressedLetter);
+            attempts+=1;
+            console.log(attempts)
+            /*for (let i = 0; i < links.length; i++) {
+                if( i === attempts ){
+                    console.log(`Attempts ${attempts} === i`)
+                    picture.setAttribute("src", links[i]);
+                }
+            }*/
+
+            if( attempts<=7 ){
+                picture.setAttribute("src", `./pictures/hangman${attempts}.png`);
+                picture.setAttribute("alt", `hangman${attempts}`);
+            }
+            if( attempts===7 ) {
+                title.style.color= "red" 
+                title.innerText= "GAME OVER!";
+                subTitle.style.color= "red" 
+                subTitle.innerText= "The man was hung before you could guess the phrase!";
+            }
+        }
+    }
+
+    fillPhrase();
+  }
+window.addEventListener("load", draw);
