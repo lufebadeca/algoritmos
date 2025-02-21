@@ -173,7 +173,7 @@ function draw() {
     let attempts = 0;
 
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
-        'K', 'L', 'M', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         
     const phrase = "el niño va a casa pronto".toUpperCase();
     
@@ -184,9 +184,9 @@ function draw() {
     for (const letter of alphabet) {
         letterDiv = document.createElement("div");
         letterDiv.textContent = letter;
-        letterDiv.classList.add("col");
-        letterDiv.classList.add("btn");
-        letterDiv.classList.add("btn-primary");
+        //letterDiv.classList.add("col");
+        //letterDiv.classList.add("btn");
+        letterDiv.classList.add("alphabet-letter");
         alphabetBox.appendChild(letterDiv);
     }
 
@@ -203,20 +203,20 @@ function draw() {
     //if was found
     function revealLetters(pressedLetter){
 
-        phraseDiv
+        const childLettersHTML = document.getElementsByClassName("hidden-letter");
 
-        for (const letter of phrase) {
-            letterDiv = document.getElementById("div");
-            letterDiv.textContent = letter;
-            letterDiv.classList.add("hidden-letter");
-            if (letter===" "){ letterDiv.classList.add("blank-space"); }
+        for (const letter of childLettersHTML) {
+            if (pressedLetter===letter.textContent){
+                letter.classList.add("found-letter");
+                letter.classList.remove("hidden-letter");
+            }
             phraseDiv.appendChild(letterDiv);
         }
     }; 
 
     function disableLetter(pressedLetter){
 
-        const childLettersHTML = document.getElementsByClassName("btn-primary");
+        const childLettersHTML = document.getElementsByClassName("alphabet-letter");
 
         for (let index = 0; index < childLettersHTML.length; index++) {
             if (pressedLetter === childLettersHTML[index].textContent ){
@@ -236,23 +236,19 @@ function draw() {
     ];
 
     function checkPressedLetter(e){
-        pressedLetter = e.target.closest(".btn").textContent;
+        pressedLetter = e.target.closest(".alphabet-letter").textContent;
 
-        //if letter in phrase
+        console.log(pressedLetter);
         if( phrase.includes(pressedLetter)  ){
             disableLetter(pressedLetter);
-            
-        }else{
+            revealLetters(pressedLetter);
+            if (condition) {
+                
+            }
+        }else if ( pressedLetter>="A" && pressedLetter<="Z" ){
             disableLetter(pressedLetter);
             attempts+=1;
-            console.log(attempts)
-            /*for (let i = 0; i < links.length; i++) {
-                if( i === attempts ){
-                    console.log(`Attempts ${attempts} === i`)
-                    picture.setAttribute("src", links[i]);
-                }
-            }*/
-
+            console.log(attempts);
             if( attempts<=7 ){
                 picture.setAttribute("src", `./pictures/hangman${attempts}.png`);
                 picture.setAttribute("alt", `hangman${attempts}`);

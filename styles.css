@@ -89,8 +89,19 @@ a:hover{
 }
 
 .alphabet-letter{
-    display: inline-block;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 44px;
+    border: 3px solid goldenrod;
+    background-color: olivedrab;
+    border-radius: 8px;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 .hidden-letter{
@@ -100,6 +111,14 @@ a:hover{
     margin-left: 4px;
     width: 20px;
     color: rgb(255, 251, 242);
+}
+.found-letter{
+    border-bottom: 2px dashed black;
+    display: inline-block;
+    padding: 8px;
+    margin-left: 4px;
+    width: 20px;
+    color: rgb(4, 4, 4);
 }
 
 .blank-space{
@@ -112,6 +131,7 @@ a:hover{
 
 .disabled{
     background-color: gray;
+    cursor:default;
 }
 
 .hangman-pic{
