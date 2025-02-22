@@ -15,45 +15,16 @@ function draw() {
   const phraseDiv = document.getElementById("phrase-div");
   const picture = document.querySelector(".hangman-pic");
 
-  //alphabetBox.addEventListener('click', checkPickSound);
-
   let attempts = 0;
 
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "Ñ",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+  const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
+    "N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
   const phrases = {
     dichos_populares: [
-      "La esperanza es lo último que se pierde",
+      "La esperanza es lo ultimo que se pierde",
       "Preguntando se llega a Roma",
-      "Mas vale pájaro en mano que ver un ciento volando",
+      "Mas vale pajaro en mano que ver un ciento volando",
       "El que tiene un amigo tiene un tesoro",
       "Mas sabe el diablo por viejo que por diablo",
       "Aunque la mona se vista de seda, mona se queda",
@@ -78,7 +49,6 @@ function draw() {
       "el viejo y el mar",
       "Hamlet",
       "Cumbres borrascosas",
-      ,
       "Edipo rey",
       "La eneida",
       "La iliada",
@@ -236,7 +206,8 @@ function draw() {
   const animalesPrehistoricos = phrases.animales.prehistoricos;
 
   console.log(
-    `Hay ${  Object.keys(phrases).length
+    `Hay ${
+      Object.keys(phrases).length
     } categorias. ${dichosPopularesLength} refranes, ${librosFamososLength} libros ${peliculasLength} peliculas, ${
       animalesTerrestres[0]
     } es un an terr y ${animalesTerrestres.length} to, ${
@@ -248,24 +219,25 @@ function draw() {
     } an Prehist y ${animalesPrehistoricos.length}`
   );
 
-  const randomCat = Math.floor(Math.random()* 3  ) //de 0 a catgs# menos anmls
-  const phraseIndex = Math.floor(Math.random()*Object.values(phrases)[randomCat].length );
-  console.log(randomCat, phraseIndex);
-  const phrase = Object.values(phrases)[randomCat][phraseIndex];
-  console.log(phrase);
-
-  //add event listener for alphabetBox to detect indivdual (child) letters
-  //alphabetBox.addEventListener('click', checkPressedLetter);
+  const randomCatIndex = Math.floor(Math.random() * 3); //de 0 a catgs# menos anmls
+  const phraseIndex = Math.floor(Math.random() * Object.values(phrases)[randomCatIndex].length);
+  console.log(randomCatIndex, phraseIndex);
+  const phrase = Object.values(phrases)[randomCatIndex][phraseIndex].toUpperCase() ;
+  //const phrase = Object.values(phrases)[0][0].toUpperCase();
+  let phraseState = phrase.split("").map(letter => ({
+    char: letter,  // Original letter
+    revealed: letter === " " || letter === "." || letter === "," ||
+     letter === ":" || letter === "-"  // True initially for blank spaces or special chars
+  }));
 
   //fill alphabetBox with letters and add styles
   for (const letter of alphabet) {
     letterDiv = document.createElement("div");
     letterDiv.textContent = letter;
-    //letterDiv.classList.add("col");
-    //letterDiv.classList.add("btn");
     letterDiv.classList.add("alphabet-letter");
-    letterDiv.addEventListener("click", checkPressedLetter);
     letterDiv.addEventListener("click", checkPickSound);
+    letterDiv.addEventListener("click", checkPressedLetter);
+    letterDiv.addEventListener("mouseenter", playHoverSound);
     alphabetBox.appendChild(letterDiv);
   }
 
@@ -274,13 +246,7 @@ function draw() {
       letterDiv = document.createElement("div");
       letterDiv.textContent = letter;
       letterDiv.classList.add("hidden-letter");
-      if (
-        letter === " " ||
-        letter === "." ||
-        letter === "," ||
-        letter === ":" ||
-        letter === "-"
-      ) {
+      if ( letter === " " || letter === "." || letter === "," || letter === ":" || letter === "-" ) {
         letterDiv.classList.add("special-char");
       }
       phraseDiv.appendChild(letterDiv);
@@ -291,16 +257,17 @@ function draw() {
   function revealLetters(pressedLetter) {
     const lettersHTML = document.getElementsByClassName("hidden-letter");
     const specialCharsHTML = document.getElementsByClassName("special-char");
+    let cuentaLetra=0;
 
     for (const letter of lettersHTML) {
       if (pressedLetter === letter.textContent) {
-        //console.log(`presionada ${pressedLetter} es igual a la encontrada ${letter.textContent}`)
+        console.log(`presionada ${pressedLetter} es igual a la encontrada ${letter.textContent}` );
         letter.classList.add("revealed-letter");
         letter.classList.remove("hidden-letter");
+        cuentaLetra+=1;
       }
-      phraseDiv.appendChild(letterDiv);
     }
-    //console.log(`letters: ${lettersHTML.length}, specialChars: ${specialCharsHTML.length}`)
+    console.log(`La letra ${pressedLetter} aparece ${cuentaLetra} veces`)
     return lettersHTML.length - specialCharsHTML.length;
   }
 
@@ -325,14 +292,19 @@ function draw() {
     "https://drive.google.com/file/d/10uuyftiPEiSsPok52gVwiS3EiMSHHi74/view?usp=drive_link",
   ];
 
+  function playHoverSound(e){
+    hoverSound.playbackRate = 1.5;
+    hoverSound.play();
+  }
+
   function checkPickSound(e) {
-    pressedLetter = e.target.closest(".alphabet-letter").textContent;
+    pressedLetter = e.target.textContent;
     if (phrase.includes(pressedLetter)) {
-      correctSound.play();
       correctSound.playbackRate = 2; // Acelera el sonido 1.5 veces
-    } else if (pressedLetter >= "A" && pressedLetter <= "Z") {
-      wrongSound.play();
+      correctSound.play();
+    } else if ( (pressedLetter >= "A" && pressedLetter <= "Z") ||  pressedLetter == "Ñ" ) {
       wrongSound.playbackRate = 2.4; // Acelera el sonido 1.5 veces
+      wrongSound.play();
     }
   }
 
@@ -349,12 +321,11 @@ function draw() {
         title.style.color = "blue";
         title.innerText = "ADIVINASTE!";
         subTitle.style.color = "cyan";
-        subTitle.innerText =
-          "Has adivinado la frase y salvaste al hombre de una muerte segura!";
-        completedSound.play();
+        subTitle.innerText = "Has adivinado la frase y salvaste al hombre de una muerte segura!";
         completedSound.playbackRate = 1.2;
+        completedSound.play();
       }
-    } else if (pressedLetter >= "A" && pressedLetter <= "Z") {
+    } else if ((pressedLetter >= "A" && pressedLetter <= "Z") || pressedLetter == "Ñ") {
       disableLetter(pressedLetter);
       attempts += 1;
       console.log(attempts);
@@ -363,17 +334,19 @@ function draw() {
         picture.setAttribute("alt", `hangman${attempts}`);
       }
       if (attempts === 7) {
+        document.querySelectorAll(".alphabet-letter").forEach(letter => 
+          letter.removeEventListener("click", checkPressedLetter) );
         title.style.color = "red";
         title.innerText = "GAME OVER!";
         subTitle.style.color = "red";
-        subTitle.innerText =
-          "El hombre fue colgado antes de que pudieras adivinar la frase!";
-        gameOverSound.play();
+        subTitle.innerText = "El hombre fue colgado antes de que pudieras adivinar la frase!";
         gameOverSound.playbackRate = 1.5;
+        gameOverSound.play();
       }
     }
-    //e.target.removeEventListener("click", checkPickSound);
     e.target.removeEventListener("click", checkPressedLetter);
+    e.target.removeEventListener("mouseenter", playHoverSound);
+    e.target.removeEventListener("click", checkPickSound);
   }
 
   fillPhrase();
