@@ -1,0 +1,57 @@
+body {
+    font-family: "Kanit", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.phrase{
+    width: 90%;
+    border: 1px dashed lightcoral;
+}
+
+.alphabet-letter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 44px;
+    border: 3px solid goldenrod;
+    background-color: olivedrab;
+    border-radius: 8px;
+    margin: 8px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.hidden-letter{
+    border-bottom: 2px dashed black;
+    display: inline-block;
+    padding: 8px;
+    margin-left: 4px;
+    width: 20px;
+    color: rgb(255, 251, 242);
+}
+.revealed-letter{
+    border-bottom: 2px dashed black;
+    display: inline-block;
+    padding: 8px;
+    margin-left: 4px;
+    width: 20px;
+    color: rgb(4, 4, 4);
+}
+
+.special-char{
+    border-bottom: none;
+    display: inline-block;
+    padding: 8px;
+    margin-left: 4px;
+    width: 20px;
+    color: rgb(4, 4, 4);
+}
+
+.disabled{
+    background-color: gray;
+    cursor:default;
+}
