@@ -11,9 +11,9 @@ function draw() {
 
   const subTitle = document.querySelector("#sub-title");
   const title = document.querySelector("#title");
-  const alphabetBox = document.getElementById("alphabet-box");
+  const alphabetBox = document.getElementById("alphabet-container");
   const phraseDiv = document.getElementById("phrase-div");
-  const picture = document.querySelector(".hangman-pic");
+  const picture = document.querySelector(".balloon");
 
   let attempts = 0;
 
@@ -222,6 +222,7 @@ function draw() {
   const randomCatIndex = Math.floor(Math.random() * 3); //de 0 a catgs# menos anmls
   const phraseIndex = Math.floor(Math.random() * Object.values(phrases)[randomCatIndex].length);
   console.log(randomCatIndex, phraseIndex);
+
   const phrase = Object.values(phrases)[randomCatIndex][phraseIndex].toUpperCase() ;
   //const phrase = Object.values(phrases)[0][0].toUpperCase();
   let phraseState = phrase.split("").map(letter => ({
@@ -230,23 +231,26 @@ function draw() {
      letter === ":" || letter === "-"  // True initially for blank spaces or special chars
   }));
 
-  //fill alphabetBox with letters and add styles
-  for (const letter of alphabet) {
-    letterDiv = document.createElement("div");
-    letterDiv.textContent = letter;
-    letterDiv.classList.add("alphabet-letter");
-    letterDiv.addEventListener("click", checkPickSound);
-    letterDiv.addEventListener("click", checkPressedLetter);
-    letterDiv.addEventListener("mouseenter", playHoverSound);
-    alphabetBox.appendChild(letterDiv);
-  }
+  console.log(phraseState);
 
-  function fillPhrase() {
-    for (const letter of phrase) {
+  function fillLetterBoxes() {  
+    
+        //fill alphabetBox with letters and add styles
+    for (const letter of alphabet) {
       letterDiv = document.createElement("div");
       letterDiv.textContent = letter;
+      letterDiv.classList.add("alphabet-letter");
+      letterDiv.addEventListener("click", checkPickSound);
+      letterDiv.addEventListener("click", checkPressedLetter);
+      letterDiv.addEventListener("mouseenter", playHoverSound);
+      alphabetBox.appendChild(letterDiv);
+    }
+    // create div elements for the hidden phrase
+    for (const letter of phraseState) {
+      letterDiv = document.createElement("div");
+      letterDiv.textContent = letter.char;
       letterDiv.classList.add("hidden-letter");
-      if ( letter === " " || letter === "." || letter === "," || letter === ":" || letter === "-" ) {
+      if ( letter.revealed===true ) {
         letterDiv.classList.add("special-char");
       }
       phraseDiv.appendChild(letterDiv);
@@ -255,20 +259,39 @@ function draw() {
 
   //if was found
   function revealLetters(pressedLetter) {
-    const lettersHTML = document.getElementsByClassName("hidden-letter");
-    const specialCharsHTML = document.getElementsByClassName("special-char");
+    let lettersHTML = phraseDiv.children;
+    console.log(lettersHTML)
+    //const specialCharsHTML = document.getElementsByClassName("special-char");
     let cuentaLetra=0;
 
-    for (const letter of lettersHTML) {
-      if (pressedLetter === letter.textContent) {
-        console.log(`presionada ${pressedLetter} es igual a la encontrada ${letter.textContent}` );
-        letter.classList.add("revealed-letter");
-        letter.classList.remove("hidden-letter");
+    phraseState.forEach( letter => {
+      if (pressedLetter === letter.char) {
+        letter.revealed=true;
         cuentaLetra+=1;
       }
+    });
+
+    if (phraseState.length===lettersHTML.length) {
+      for (let i=0; i<lettersHTML.length; i++) { 
+        if ( phraseState[i].char === pressedLetter ) {
+          //console.log(`presionada ${pressedLetter} == ${letter.char} del DOM` );
+          console.log("letra DOM iterada: " +  lettersHTML[i].textContent + " estado: " +phraseState[i].char );
+          //console.log("letra DOM iterada: " + lettersHTML[i].textContent);
+          lettersHTML[i].classList.add("revealed-letter");
+          lettersHTML[i].classList.remove("hidden-letter");
+        }
+      }
+    }else{
+      console.log("el estado y el dom no coinciden en long");
     }
-    console.log(`La letra ${pressedLetter} aparece ${cuentaLetra} veces`)
-    return lettersHTML.length - specialCharsHTML.length;
+
+    stateLetters = phraseState.map( item=>item.char ) ;
+    stateRevealedLetters = phraseState.filter( item=>item.revealed==true ) ;
+    console.log(`La letra ${pressedLetter} aparece ${cuentaLetra} veces`);
+    console.log(stateLetters);
+    console.log(stateRevealedLetters);
+    console.log(`Char totales ${stateLetters.length},reveladas: ${stateRevealedLetters.length}`);
+    return stateLetters.length - stateRevealedLetters.length;
   }
 
   function disableLetter(pressedLetter) {
@@ -313,7 +336,9 @@ function draw() {
     pressedLetter = e.target.textContent;
     console.log(pressedLetter);
 
-    if (phrase.includes(pressedLetter)) {
+    stateLetters= phraseState.map( item=>item.char ) ;
+
+    if ( stateLetters.includes(pressedLetter)) {
       disableLetter(pressedLetter);
       const remainingLetters = revealLetters(pressedLetter);
       //console.log(remainingLetters);
@@ -329,11 +354,13 @@ function draw() {
       disableLetter(pressedLetter);
       attempts += 1;
       console.log(attempts);
-      if (attempts <= 7) {
-        picture.setAttribute("src", `./pictures/hangman${attempts}.png`);
-        picture.setAttribute("alt", `hangman${attempts}`);
+      if (attempts <= 4) {
+        // picture.setAttribute("src", `./pictures/hangman${attempts}.png`);
+        // picture.setAttribute("alt", `hangman${attempts}`);
+        picture.classList.add(`falling-${attempts}`);
+        picture.classList.remove(`falling-${attempts-1}`);
       }
-      if (attempts === 7) {
+      if (attempts === 4) {
         document.querySelectorAll(".alphabet-letter").forEach(letter => 
           letter.removeEventListener("click", checkPressedLetter) );
         title.style.color = "red";
@@ -349,5 +376,5 @@ function draw() {
     e.target.removeEventListener("click", checkPickSound);
   }
 
-  fillPhrase();
+  fillLetterBoxes();
 }
