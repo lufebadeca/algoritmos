@@ -4,7 +4,32 @@ Este repositorio contiene implementaciones en JavaScript de varios algoritmos cl
 
 Algoritmos Implementados
 
-1. FizzBuzz
+1. Hangman: versión globo hundido
+
+Este juego elaboardo con contenido multimedia y alta interactividad consiste en adivinar la frase oculta.
+
+El jugador debe escoger una letra, y si esta está en la frase, se velerará las veces que aparezca.
+
+Si la letra no está, el globo comenzará a hundirse en el océano.
+
+Si el jugador se equivoca 4 veces, perderá la partida.
+
+Hay 4 categorías para escoger: Libros, Refranes, Animales y Películas.
+
+2. Verificador de Palíndromos
+
+Este algoritmo verifica si una frase ingresada es un palíndromo (se lee igual de izquierda a derecha y viceversa, ignorando espacios y mayúsculas/minúsculas).
+
+Ejemplo de entrada:
+
+Ingrese una frase: Anilina
+
+Ejemplo de salida:
+
+"Anilina" es un palíndromo
+
+
+3. FizzBuzz
 
 Este algoritmo imprime los números del 1 al 100 con las siguientes reglas:
 
@@ -27,7 +52,7 @@ Fizz
 7
 ...
 
-2. Contador de Vocales
+4. Contador de Vocales
 
 Este algoritmo solicita al usuario ingresar una palabra y cuenta la cantidad de vocales en ella.
 
@@ -39,7 +64,7 @@ Ejemplo de salida:
 
 Su palabra "Computadora" tiene 5 vocales
 
-3. Serie de Fibonacci
+5. Serie de Fibonacci
 
 Este algoritmo genera la secuencia de Fibonacci hasta un límite especificado por el usuario.
 
@@ -60,21 +85,6 @@ Ejemplo de salida:
 21
 34
 
-4. Verificador de Palíndromos
-
-Este algoritmo verifica si una frase ingresada es un palíndromo (se lee igual de izquierda a derecha y viceversa, ignorando espacios y mayúsculas/minúsculas).
-
-Ejemplo de entrada:
-
-Ingrese una frase: Anilina
-
-Ejemplo de salida:
-
-"Anilina" es un palíndromo
-
-Uso
-
-Puedes probar estos algoritmos copiando el código en la consola del navegador o en un archivo JavaScript ejecutado en un entorno compatible como Node.js.
 
 Autor
 
