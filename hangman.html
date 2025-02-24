@@ -18,7 +18,7 @@
         </div>
 
         <div class="navbar-menu">
-            <a href="hangman.html">Hangman</a>
+            <a href="hangman-menu.html">Hangman</a>
             <a href="palindrome.html">is Palindrome?</a>
             <a href="vocals.html">vocals counter</a>
             <a href="guessNumber.html">guess the Number</a>
@@ -31,31 +31,28 @@
     <div class="background-container">
         <div class="section-1">
             <h1 id="title">Juego del Ahogado</h1>
-            <h3 id="sub-title">Adivina la frase antes de que el piloto se ahogue en aguas profundas</h3>
-
+            <p id="sub-title">Adivina la frase antes de que el piloto se ahogue en aguas profundas</p>
+            <h3 id="category-title">Categoría: </h3>
             <div class="alphabet-container text-center" id="alphabet-container">
             </div>
         </div>
         <div class="section-2">
-            <img class="balloon falling-0 " src="./pictures/ballon.png" alt="balloon">
-            <div class="phrase-div" id="phrase-div">
+            <div class="balloon falling-0">
+                <img class="balloon-img falling-0" src="./pictures/balloon.png" alt="balloon">
+            </div>
 
+            <div class="phrase-div" id="phrase-div">
             </div>
         </div>
 
-        <!-- <div class="ballon-container">
-            <div class="ballon"></div>
-            <div class="string"></div>
-        </div> -->
-
-
         <audio id="hoverSound" src="./sounds/click.wav" preload="auto"></audio>
-        <audio id="clickSound" src="./sounds/menu-click.wav" preload="auto"></audio>
-        <audio id="gameSound" src="./sounds/suspense.wav" preload="auto"></audio>
         <audio id="correctSound" src="./sounds/correct.wav" preload="auto"></audio>
         <audio id="wrongSound" src="./sounds/wrong.wav" preload="auto"></audio>
+        <audio id="splashSound" src="./sounds/splash.wav" preload="auto"></audio>
         <audio id="gameOverSound" src="./sounds/game-over.wav" preload="auto"></audio>
         <audio id="completedSound" src="./sounds/completed.wav" preload="auto"></audio>
+        <audio id="suspenseSound" src="./sounds/suspense.wav" preload="auto"></audio>
+        <audio id="musicSound" src="./sounds/music.mp3" preload="auto"></audio>
 
     </div>
 

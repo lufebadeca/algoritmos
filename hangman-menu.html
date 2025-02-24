@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-hangman-menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+    <title>Fizz Buzz</title>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-pic">
+            <a href="index.html">
+                <img src="./pictures/algor.png" width="45px" alt="algorithm_picture">
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <a href="hangman-menu.html">Hangman</a>
+            <a href="palindrome.html">is Palindrome?</a>
+            <a href="vocals.html">vocals counter</a>
+            <a href="guessNumber.html">guess the Number</a>
+            <a href="fizzbuzz.html">FizzBuzz</a>
+            <a href="fibonacci.html">Fibonacci series</a>
+            <a href="factorial.html">Factorial series</a>
+        </div>
+    </nav>
+
+    <div class="container-menu">
+        <div id="menu" class="menu">
+
+            <img src="./pictures/title.png" alt="">
+
+            <img class="balloon" src="./pictures/balloon.png" alt="balloon">
+
+            <h2 id="title">Escoge tu categoría</h2>
+
+            <div id="categories-div" class="categories-div">
+                <div class="categories" id="books">
+                    <img class="img" src="./pictures/book.png" alt="books">
+                </div>
+                <div class="categories" id="films">
+                    <img class="img" src="./pictures/film.png" alt="films">
+                </div>
+                <div class="categories" id="animals">
+                    <img class="img" src="./pictures/animal.png" alt="animals">
+                </div>
+                <div class="categories" id="sayings">
+                    <img class="img" src="./pictures/sayings.png" alt="sayings">
+                </div>
+            </div>
+        </div>
+        <button id="start-button" class="start-button " disabled="true">
+            <img src="./pictures/START.png" alt="">
+        </button>
+
+    </div>
+
+    <audio id="hoverSound" src="./sounds/click.wav" preload="auto"></audio>
+    <audio id="clickSound" src="./sounds/menu-click.wav" preload="auto"></audio>
+    <audio id="gameSound" src="./sounds/music.mp3" preload="auto"></audio>
+    <audio id="splashSound" src="./sounds/splash.wav" preload="auto"></audio>
+
+    <script src="script-hangman-menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

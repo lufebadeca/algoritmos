@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 40%;
-    border: 1px dashed lightcoral;
+    /* border: 1px dashed lightcoral; */
     height: 100%;
 }
 .section-2{  /*column1 */
@@ -33,26 +33,29 @@ body {
     justify-content: center;
     align-items: center;
     width: 60%;
-    border: 1px dashed lightcoral;
+    /* border: 1px dashed lightcoral; */
     /* height: 100%; */
+}
+#title, #category-title {
+    color: white;
+    font-weight: bolder;
+    text-shadow: 2px 2px 2px rgba(130, 15, 183, 0.492);
+    /* border: 1px solid white; */
+}
+#sub-title {
+    color: white;
+    font-weight:lighter;
+    text-align: center;
+    /* border: 1px solid white; */
 }
 
 .alphabet-container{
-    border: 1px dotted white;
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columnas */
     gap: 15px; /* Espacio entre letras */
     margin: auto; /* Centra el contenedor si es necesario */
     padding: 4px;
-}
-
-#title,  #sub-title {
-    color: white;
-}
-
-.phrase{
-    width: 90%;
-    border: 1px dashed lightcoral;
+    /* border: 1px dotted white; */
 }
 
 .alphabet-letter{
@@ -71,9 +74,14 @@ body {
     cursor: pointer;
 }
 
+.phrase-div{
+    z-index: 1;
+}
+
 .hidden-letter{
-    border-bottom: 2px solid white;
+    border-bottom: 3px solid white;
     display: inline-block;
+    font-size: large;
     padding: 8px;
     margin-left: 4px;
     width: 20px;
@@ -82,8 +90,9 @@ body {
 }
 
 .revealed-letter{
-    border-bottom: 2px solid white;
+    border-bottom: 3px solid white;
     display: inline-block;
+    font-size: large;
     padding: 8px;
     margin-left: 4px;
     width: 20px;
@@ -101,46 +110,66 @@ body {
 
 .disabled{
     background-color: gray;
-    cursor:default;
+    cursor: default;
 }
 
-.balloon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+/* Contenedor con animación de flotación y cambio de altura */
 .balloon {
-    will-change: transform, top;
-    width: 300px;
-    height: 200px;
-    display: block;
-    border-radius: 50%;
-    transform: scale(1);
-    transition: top 1s ease-in-out, transform 1s ease-in-out; /* Transición suave de 1 segundo */
-    animation: float 3s ease-in-out infinite;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
     position: absolute;
+    transition: top 1s ease-in-out; /* Para el scale */
+    animation: float 3s ease-in-out infinite;
+    /* border: 1px dashed white;   */
 }
-.falling-0{
+/* Clases que cambian top */
+.falling-0 {
     top: 18vh;
-    transform: scale(3);
 }
-.falling-1{
-    top: 35vh;
-    transform: scale(2.5);
+.falling-1 {
+    top: 30vh;
 }
-.falling-2{
-    top: 50vh;
-    transform: scale(2);
+.falling-2 {
+    top: 45vh;
 }
-.falling-3{
-    top: 65vh;
-    transform: scale(1.5);
+.falling-3 {
+    top: 60vh;
 }
-.falling-4{
-    top: 85vh;
-    transform: scale(1);
+.falling-4 {
+    top: 80vh;
 }
+
+/* Imagen cuyo tamaño se escala */
+.balloon-img {
+    margin: 0;
+    padding: 0;
+    width: 350px;
+    height: 200px;
+    /* object-fit: contain; */
+    transition: transform 1s ease-in-out; /* Para el scale */
+    transform-origin: center;
+    /* border: 1px dashed rgb(194, 229, 22); */
+}
+/* Clases que cambian la escala */
+.falling-0.balloon-img {
+    transform: scale(1.2);
+}
+.falling-1.balloon-img {
+    transform: scale(0.9);
+}
+.falling-2.balloon-img {
+    transform: scale(0.78);
+}
+.falling-3.balloon-img {
+    transform: scale(0.6);
+}
+.falling-4.balloon-img {
+    transform: scale(0);
+}
+
+
 @keyframes float {
     0% {
         transform: translateY(0);
