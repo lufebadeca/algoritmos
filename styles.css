@@ -11,7 +11,6 @@ body{
     align-items: center;
     padding: 20px;
     background-color: rgb(153, 195, 251);
-    border: 1px solid rgb(229, 184, 101);
 }
 
 .container{
@@ -70,8 +69,7 @@ a{
 
 a:hover{
     color: rgb(185, 82, 82);
-    border: 1px solid rgb(255, 166, 0);
-    border-radius: 15%;
+    border-radius: 20px;
 }
 
 .result{
