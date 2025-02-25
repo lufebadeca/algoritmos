@@ -13,7 +13,6 @@ body {
     justify-content: space-between;
     align-items: center;
     height: calc(100vh - 91px);
-    border: 1px dashed lightcoral;
 }
 
 .section-1{  /*column1 */
@@ -82,7 +81,7 @@ body {
     border-bottom: 3px solid white;
     display: inline-block;
     font-size: large;
-    padding: 8px;
+    padding: 5px;
     margin-left: 4px;
     width: 20px;
     color: rgba(255, 0, 0, 0);
@@ -93,10 +92,12 @@ body {
     border-bottom: 3px solid white;
     display: inline-block;
     font-size: large;
-    padding: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-left: 4px;
     width: 20px;
     color: white;
+    text-align: center;
 }
 
 .special-char{
@@ -105,7 +106,7 @@ body {
     padding: 8px;
     margin-left: 4px;
     width: 20px;
-    color: rgb(4, 4, 4);
+    color: white;
 }
 
 .disabled{
@@ -150,7 +151,7 @@ body {
     /* object-fit: contain; */
     transition: transform 1s ease-in-out; /* Para el scale */
     transform-origin: center;
-    /* border: 1px dashed rgb(194, 229, 22); */
+    /*border: 1px dashed rgb(194, 229, 22); */
 }
 /* Clases que cambian la escala */
 .falling-0.balloon-img {

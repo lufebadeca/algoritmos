@@ -338,6 +338,11 @@ function draw() {
         musicSound.currentTime = 0;
         completedSound.playbackRate = 1.2;
         completedSound.play();
+        document.querySelectorAll(".alphabet-letter").forEach(letter =>{
+          letter.removeEventListener("click", checkPressedLetter);
+          letter.removeEventListener("mouseenter", playHoverSound);
+          letter.removeEventListener("click", checkPickSound);
+        });
       }
     } else if ((pressedLetter >= "A" && pressedLetter <= "Z") || pressedLetter == "Ñ") {
       disableLetter(pressedLetter);
@@ -357,8 +362,11 @@ function draw() {
         balloonImg.setAttribute("src", "./pictures/balloon2.png");
       }
       if (attempts === 4) {
-        document.querySelectorAll(".alphabet-letter").forEach(letter => 
-          letter.removeEventListener("click", checkPressedLetter) );
+        document.querySelectorAll(".alphabet-letter").forEach(letter =>{
+          letter.removeEventListener("click", checkPressedLetter);
+          letter.removeEventListener("mouseenter", playHoverSound);
+          letter.removeEventListener("click", checkPickSound);
+        });
         title.style.color = "#f03594";
         title.innerText = "GAME OVER!";
         subTitle.style.color = "#f03594";
