@@ -35,6 +35,7 @@ function draw() {
       case "films": tempCategory="Películas"; break;
       case "animals": tempCategory="Animales"; break;
       case "sayings": tempCategory="Dichos y refranes"; break;
+      case "random": tempCategory="Al azar"; break;
     
       default: "";  break;
     }

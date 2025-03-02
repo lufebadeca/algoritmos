@@ -17,6 +17,7 @@ function draw() {
   const phraseDiv = document.getElementById("phrase-div");
   const balloon = document.querySelector(".balloon");
   const balloonImg = document.querySelector(".balloon-img");
+  const sharkImg = document.getElementById("shark");
   
   let attempts = 0;
 
@@ -200,7 +201,8 @@ function draw() {
     case "books": categoryName="Libros famosos"; catIndex=1; break;
     case "films": categoryName="Películas"; catIndex=2 ; break;
     case "animals": categoryName="Animales"; catIndex=3; break;
-    default: "";window.location.href = "./hangman-menu.html";  break;
+    case "random": categoryName="Al azar"; catIndex = Math.floor(Math.random()*4) ; break;
+    default: ""; window.location.href = "./hangman-menu.html";  break;
   }
   categoryTitle.textContent= "Categoría: " + categoryName;
 
@@ -289,17 +291,6 @@ function draw() {
     }
   }
 
-  const links = [
-    "https://drive.google.com/file/d/1gD6fMD79gLoDNinLQmTSyHfUbXZWwm_e/view?usp=drive_link",
-    "https://drive.google.com/file/d/1hGveNfT1J-SGbG0G7qQ7MFZNrszf8QXH/view?usp=drive_link",
-    "https://drive.google.com/file/d/19S1O1SAC6cFidWBUjqMLuOKI8d--ekA3/view?usp=drive_link",
-    "https://drive.google.com/file/d/1HDnr6qKitQiRdoB3HVHQx5uDhrOIw5Ih/view?usp=drive_link",
-    "https://drive.google.com/file/d/1_Mo_VW86oCstmYpP6W14zdAu_ehSsVUw/view?usp=drive_link",
-    "https://drive.google.com/file/d/16_JaF3p0J8_7si16FVn1cElE8LiWvH0E/view?usp=drive_link",
-    "https://drive.google.com/file/d/1qqfowtnvza98LXFRTnhGvqcpQEiaMVMe/view?usp=drive_link",
-    "https://drive.google.com/file/d/10uuyftiPEiSsPok52gVwiS3EiMSHHi74/view?usp=drive_link",
-  ];
-
   function playHoverSound(e){
     hoverSound.playbackRate = 1.5;
     hoverSound.play();
@@ -360,6 +351,7 @@ function draw() {
         suspenseSound.loop=true;
         suspenseSound.play();
         balloonImg.setAttribute("src", "./pictures/balloon2.png");
+        sharkImg.classList.toggle("visible");
       }
       if (attempts === 4) {
         document.querySelectorAll(".alphabet-letter").forEach(letter =>{
@@ -377,6 +369,8 @@ function draw() {
         setTimeout( ()=>{
           gameOverSound.playbackRate = 1.5;
           gameOverSound.play();
+          balloonImg.style.display = "none";
+          sharkImg.classList.toggle("sunk");
         }, 1000)
         
       }

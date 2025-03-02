@@ -4,6 +4,10 @@ body {
     font-style: normal;
 }
 
+/* *{
+    border: 0.5px solid red;
+} */
+
 .background-container{
     margin: auto auto;
     background-image: url("./pictures/background.jpg");
@@ -71,32 +75,36 @@ body {
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
+    font-size: larger;
 }
 
 .phrase-div{
     z-index: 1;
+    cursor:none;
 }
 
 .hidden-letter{
     border-bottom: 3px solid white;
     display: inline-block;
-    font-size: large;
+    font-size: larger;
     padding: 5px;
     margin-left: 4px;
     width: 20px;
     color: rgba(255, 0, 0, 0);
     font-weight: 600;
+    
 }
 
 .revealed-letter{
     border-bottom: 3px solid white;
     display: inline-block;
-    font-size: large;
+    font-size: larger;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 4px;
     width: 20px;
     color: white;
+    text-shadow: 1px 1px 4px black;
     text-align: center;
 }
 
@@ -140,6 +148,10 @@ body {
 }
 .falling-4 {
     top: 80vh;
+    animation: none;
+}
+.falling-5{
+    display: none;
 }
 
 /* Imagen cuyo tamaño se escala */
@@ -170,7 +182,6 @@ body {
     transform: scale(0);
 }
 
-
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -180,5 +191,51 @@ body {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+.shark{
+    display: none;
+}
+
+.shark.visible{
+    display: block;
+    width: 40px;
+    position: absolute;
+    top: 90vh;
+    animation: lurk 5s linear infinite;
+}
+/* .shark.visible.sunk{
+    animation: lurk 3s linear infinite;
+} */
+
+@keyframes lurk {
+    0%{
+        left: 80%;
+        height: 25px;
+    }
+    25%{
+        left: 70%;
+        top: 93vh;
+        height: 40px;
+    }
+    50%{
+        left: 60%;
+        height:25px;
+        transform: scaleX(1);
+    }
+    51%{
+        transform: scaleX(-1);
+    }
+    75%{
+        left: 70%;
+        top: 86vh;
+        height: 40px;
+        transform: scaleX(-1);
+    }
+    100%{
+        left: 80%;
+        height: 25px;
+        transform: scaleX(-1);
     }
 }

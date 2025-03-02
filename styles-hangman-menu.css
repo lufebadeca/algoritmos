@@ -4,19 +4,27 @@ body {
     font-style: normal;
 }
 
+/* *{
+    border: 1px dashed red;
+} */
+
 .container-menu{
     margin: auto auto;
     background-image: url("./pictures/sky.jpg"); 
     background-size: cover;
-    height: calc(100vh - 91px);
+    height: calc(100vh - 85px);
     display: flex;
     flex-direction: column;
+
 }
 .menu{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    justify-content: center;
+    /* border: 1px solid green; */
+    height: 100%;
 }
 
 #title {
@@ -24,34 +32,36 @@ body {
     font-weight: bolder;
     text-shadow: 2px 2px 2px rgba(130, 15, 183, 0.492);
     text-align: center;
+    padding: 5px;
 }
 .categories-div{
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 20px;
 }
 
 .categories img{
     width: 120px;
     filter: brightness(0%);
-    transition: filter 0.5s ease-in, ttransform 0.5s ease-in ;
+    transition: filter 0.3s ease-in, transform 0.3s ease-in ;
+    margin-right: 5px;
+    /* border: 1px dashed green; */
 }
 .categories img:hover{
     width: 120px;
     filter: brightness(100%);
-    transform: scale(1.2);
-    transition: filter 0.7s ease-out ;
-    transition: transform 0.7s ease-out ;
+    transform: scale(1.25);
+    transition: filter 0.7s ease-out, transform 0.7s ease-out ;
 }
 
 .categories img.active-img{
     width: 120px;
     filter: brightness(100%);
-    transform: scale(1.2);
-    transition: filter 0.7s ease-out ;
-    transition: transform 0.7s ease-out ;
+    transform: scale(1.25);
+    transition: filter 0.7s ease-out, transform 0.7s ease-out ;
     border-radius: 50%;
     border: 4px dashed green;
+    z-index: 1000;
 }
 
 .balloon {
@@ -103,4 +113,9 @@ body {
 .active-button:hover{
     transition: transform 0.6s ease-out; 
     transform: scale(1.2);
+}
+
+.shark{
+    width: 100px;
+    
 }
