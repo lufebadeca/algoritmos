@@ -5,6 +5,7 @@ Este repositorio contiene implementaciones en JavaScript de varios algoritmos cl
 ## Algoritmos Implementados
 
 ### 1. Hangman: versión globo hundido
+![gameplay](./pictures/Gameplay.jpg)
 
 #### Este juego elaboardo con contenido multimedia y alta interactividad consiste en adivinar la frase oculta.
 - El jugador debe escoger una letra, y si esta está en la frase, se velerará las veces que aparezca.

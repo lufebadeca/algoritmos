@@ -73,7 +73,7 @@ function draw() {
       "El Diario de una Pasion",
       "V de Venganza",
       "Bastardos sin Gloria",
-      "La Chica del Dragón Tatuado",
+      "La Chica del Dragon Tatuado",
       "El Codigo Enigma",
       "Habia una Vez en Hollywood",
       "El club de la pelea",
