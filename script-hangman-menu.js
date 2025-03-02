@@ -34,7 +34,7 @@ function draw() {
       case "books": tempCategory="Libros famosos"; break;
       case "films": tempCategory="Películas"; break;
       case "animals": tempCategory="Animales"; break;
-      case "sayings": tempCategory="Dichos y refraness"; break;
+      case "sayings": tempCategory="Dichos y refranes"; break;
     
       default: "";  break;
     }

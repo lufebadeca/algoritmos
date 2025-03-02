@@ -196,11 +196,11 @@ function draw() {
   const category = localStorage.getItem("gameCategory");
 
   switch (category) {
-    case "sayings": categoryName="Dichos y refraness"; catIndex=0; break;
+    case "sayings": categoryName="Dichos y refranes"; catIndex=0; break;
     case "books": categoryName="Libros famosos"; catIndex=1; break;
     case "films": categoryName="Películas"; catIndex=2 ; break;
     case "animals": categoryName="Animales"; catIndex=3; break;
-    default: "";  break;
+    default: "";window.location.href = "./hangman-menu.html";  break;
   }
   categoryTitle.textContent= "Categoría: " + categoryName;
 
