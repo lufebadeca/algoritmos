@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/jpg" href="./favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Palindrome</title>
@@ -13,8 +17,8 @@
     
     <nav class="navbar">
         <div class="navbar-pic">
-            <a href="index.html">
-                <img src="./pictures/algor.png" width="45px" alt="algorithm_picture">
+            <a href="hangman-menu.html">
+                <img src="./pictures/sharkie.png" width="45px" alt="algorithm_picture">
             </a>
         </div>
 
@@ -30,17 +34,17 @@
     </nav>
 
     <div class="container">
-        <h1>Palindrome</h1>
-        <h3>In this page you can check if an entered text is palindrome</h3>
-        <p>Palindromes are sentences that can be read both backwards and forward, if blank spaces are ignored</p>
+        <h1>Palíndromos</h1>
+        <h3>En esta página puedes escribir una frase y verificar si es palíndroma</h3>
+        <p>Los palíndromos son frases u oraciones que pueden leerse de igual forma de izquierda a derecha o viceversa, omitiendo los espacios</p>
     
         <label for="text-input">Enter your sentence here:</label>
         <input type="text-input" id="text-input" class="long-input">
         
-        <button class="btn btn-secondary" onclick="isPalindrome()">Check palindrome!</button>
+        <button class="btn btn-secondary" onclick="isPalindrome()">Probar si es palíndromo!</button>
         
         <p id="result"></p>
-        <button class="btn btn-info" onclick="palindromeSuggest()">Suggest one!</button>
+        <button class="btn btn-info" onclick="palindromeSuggest()">Sugiere uno!</button>
     
     </div>
 

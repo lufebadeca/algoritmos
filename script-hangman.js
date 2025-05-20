@@ -370,7 +370,7 @@ function draw() {
           gameOverSound.playbackRate = 1.5;
           gameOverSound.play();
           balloonImg.style.display = "none";
-          sharkImg.classList.toggle("sunk");
+          //sharkImg.classList.toggle("sunk");
         }, 1000)
         
       }

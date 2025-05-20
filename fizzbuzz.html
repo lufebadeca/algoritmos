@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/jpg" href="./favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Fizz Buzz</title>
@@ -13,8 +17,8 @@
     
     <nav class="navbar">
         <div class="navbar-pic">
-            <a href="index.html">
-                <img src="./pictures/algor.png" width="45px" alt="algorithm_picture">
+            <a href="hangman-menu.html">
+                <img src="./pictures/sharkie.png" width="45px" alt="algorithm_picture">
             </a>
         </div>
 
@@ -31,20 +35,28 @@
 
     <div class="container-2">
         <div class="info">
-            <h1>Fizz Buzz series</h1>
-            <h3>In this page you can generate a fizz buzz series according to the folowing rules:</h3>
+            <h1>Serie Fizz Buzz</h1><br>
+            
+            <h3>En esta página puedes generar una serie Fizz Buzz según las siguientes reglas:</h3>
+            <br>
+
             <ul>
-                <li>If number is a multiple of 3, <em>"Fizz"</em> will be printed</li>
-                <li>If number is a multiple of 5, <em>"Buzz"</em> will be printed</li>
-                <li>If number is a multiple of 3 and 5, <em>"FizzBuzz"</em> will be printe</li>
+                <li>Si el número es múltiplo de 3, se imprimirá <em>"Fizz"</em></li>
+                <li>Si el número es múltiplo de 5, se imprimirá <em>"Buzz"</em></li>
+                <li>Si el número es múltiplo de 3 y 5, se imprimirá <em>"FizzBuzz"</em></li>
             </ul>
-            <div>
-                <label for="">Type the maximum for your FizzBuzz series:</label>
-                <input type="number" id="max" name="max">
+            <br>
+
+            <div style="display: flex; flex-direction: row;">
+                <label for="">Límite de la serie FizzBuzz:</label>
+                <input type="number" value="100" id="max" name="max">
             </div>
+
+            <button class="button" id="fizz-buton" onclick="FizzBuzz()">Generar serie FizzBuzz</button>
         </div>
+
         <div class="series-result">
-            <textarea name="textBox" id="" cols="50" rows="100"></textarea>
+            <p name="textBox" class="series-result-p" id="fizz-result" cols="50" rows="100"></p>
         </div>
 
     </div>

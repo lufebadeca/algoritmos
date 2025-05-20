@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/jpg" href="./favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Vocals</title>
@@ -13,8 +17,8 @@
     
     <nav class="navbar">
         <div class="navbar-pic">
-            <a href="index.html">
-                <img src="./pictures/algor.png" width="45px" alt="algorithm_picture">
+            <a href="hangman-menu.html">
+                <img src="./pictures/sharkie.png" width="45px" alt="algorithm_picture">
             </a>
         </div>
 
@@ -30,15 +34,15 @@
     </nav>
 
     <div class="container">
-        <h1>Vocals counter</h1>
-        <h3>In this page you can get the total vocals count of a word or sentence</h3>
-        <label for="text-input">Enter your word or sentence here:</label>
-        <input type="text" id="text-input" name="text-input">
-        <button class="button">Count vocals!</button>
-        <input type="text" id="result" class="info" placeholder="Your sentence is...">
+        <h1>Contador de vocales</h1>
+        <h3>En esta página, puedes contar el número de vocales que hay en una frase</h3>
+        <label for="vocals-input">Ingresa tu palabra o frase acá:</label>
+        <input type="text" id="vocals-input" name="text-input">
+        <button class="button" id="button-vocals" onclick="Vocales()">Contar las vocales!</button>
+        <input type="text" id="vocals-result" class="info" placeholder="Your sentence is...">
     </div>
 
-    <script scr="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>

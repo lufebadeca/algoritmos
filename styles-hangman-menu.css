@@ -5,8 +5,8 @@ body {
 }
 
 /* *{
-    border: 1px dashed red;
-} */
+    border: 0.25px dashed red;
+}  */
 
 .container-menu{
     margin: auto auto;
@@ -37,7 +37,7 @@ body {
 .categories-div{
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .categories img{
@@ -115,7 +115,3 @@ body {
     transform: scale(1.2);
 }
 
-.shark{
-    width: 100px;
-    
-}
