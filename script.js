@@ -11,19 +11,30 @@ function FizzBuzz(){
 
     for (let i = 1; i <= limit; i++) {
     
+        let result = "";
+
         if (i%3==0 && i%5==0) {
             result = "FizzBuzz"
+            fizzResult.innerHTML +=  `<span class="${result}"> ${result}</span></br>`; 
         }
         else if (i%5==0) {
             result = "Buzz";
+            fizzResult.innerHTML +=  `<span class="${result}"> ${result}</span></br>`; 
         }
         else if (i%3==0) {
             result = "Fizz";
+            fizzResult.innerHTML +=  `<span class="${result}"> ${result}</span></br>`; 
         }else{
             result = i;
+            fizzResult.innerHTML +=  `<span>${result}</span></br>`; 
         }
-        fizzResult.innerHTML +=  `${result} <br>`; 
+        
     }
+
+    fizzResult.scrollTo({
+        top: fizzResult.scrollHeight,
+        behavior: "smooth"
+    });
 }
 
 function Vocales(){
@@ -35,6 +46,7 @@ function Vocales(){
         alert("Ingrese una palabra con al menos una letra");
         return
     }
+    result.innerHTML= "";
     for (let i = 0; i < texto.length; i++) {
         if(texto[i]== "a" || texto[i]== "A" ||
             texto[i]== "e" || texto[i]== "E" || 
@@ -43,10 +55,14 @@ function Vocales(){
             texto[i]== "u" || texto[i]== "U")
         {
             cont_vocales+=1;
-        };
-    }
+            result.innerHTML += `<span class="vocal">${texto[i]}</span>`;
+        }
+        else{
+            result.innerHTML += texto[i];
+        }
+    };
 
-    result.value = `Su palabra "${texto}" tiene ${cont_vocales} vocales`
+    result.innerHTML +=`</br>Su frase "${texto}" tiene ${cont_vocales} vocales`
 }
 
 
@@ -76,6 +92,10 @@ function Fibonacci(){
         num2=suma;
         contador += 1;
     }
+    fiboResult.scrollTo({
+        top: fiboResult.scrollHeight,
+        behavior: "smooth"
+    });
     plotFibonacciSpiral(limit);
 }
 
@@ -249,7 +269,8 @@ function AdivinaNumero(){
 
     let numeroJugador = "";
     let contador=0;
-       
+    
+    setTimeout(()=>{alert("pasó dos segundos")}, 2000)
     do {
         numeroJugador= +prompt("Ingrese un número del 1 al 100");
         contador+=1;
@@ -260,7 +281,7 @@ function AdivinaNumero(){
         }else if(numeroJugador===numeroSecreto){
             alert(`Adivinaste el número en ${contador} intentos!!`);
             numberResult.innerText = `El número era ${numeroSecreto}. Adivinaste en ${contador} intentos!!`
-            break;
+            break;        
         }
     } while (true);
 }

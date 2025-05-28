@@ -71,7 +71,7 @@ Este algoritmo solicita al usuario ingresar una palabra y cuenta la cantidad de 
 
 ### 5. Serie de Fibonacci
 
-Este algoritmo genera la secuencia de Fibonacci hasta un límite especificado por el usuario.
+Este algoritmo genera la secuencia de Fibonacci hasta un límite especificado por el usuario y lo grafica en una gráfica espiral.
 
 - Ejemplo de entrada:
 
