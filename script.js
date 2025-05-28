@@ -96,7 +96,8 @@ function Fibonacci(){
         top: fiboResult.scrollHeight,
         behavior: "smooth"
     });
-    plotFibonacciSpiral(limit);
+
+    setTimeout( ()=>plotFibonacciSpiral(limit), 150);
 }
 
     
@@ -109,9 +110,9 @@ function plotFibonacciSpiral(maxValue) {
 
     // Limpiar canvas
     // Limpiar canvas
-    ctx.clearRect(0, 0, width, height);
     ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
     ctx.translate(width / 2, height / 2); // Mover origen al centro
+    ctx.clearRect(-width, -height, 2*width, 2*height);
 
     // ------------------------------
     // PARÁMETROS MATEMÁTICOS
@@ -270,7 +271,6 @@ function AdivinaNumero(){
     let numeroJugador = "";
     let contador=0;
     
-    setTimeout(()=>{alert("pasó dos segundos")}, 2000)
     do {
         numeroJugador= +prompt("Ingrese un número del 1 al 100");
         contador+=1;
@@ -292,9 +292,13 @@ function Factorial(){
     resultFactorial = document.getElementById("result-factorial");
     numero = +document.getElementById("fact").value;
 
+    resultFactorial.innerHTML = `${numero} factorial es: </br>`;
     let accum=1;
     for (let i = 1; i <= numero; i++) {
+        resultFactorial.innerHTML += `${accum} x ${i} = `;
         accum *= i;
+        resultFactorial.innerHTML += `${accum}</br>`;
     }
-    resultFactorial.innerText = `${numero} factorial es ${accum}`;
+
+    resultFactorial.scrollTo({top: resultFactorial.scrollHeight, behavior: "smooth"})
 }

@@ -147,7 +147,7 @@ body {
     box-shadow: var(--shadow);
 }
 
-#fibo-result{
+#fibo-result, #result-factorial{
     height: 160px;
     margin: 0;
 }
