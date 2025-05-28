@@ -159,6 +159,7 @@ body {
     color: red;
     font-weight: bold;
 }
+
 #vocals-result {
     height: 150px;
     width: 100%;
@@ -171,7 +172,7 @@ body {
 }
 .vocal, .FizzBuzz{
     font-weight: bold;
-    animation: brillo 2s linear alternate infinite;
+    animation: brillo 1.2s linear alternate infinite;
 }
 @keyframes brillo {
     0%{
