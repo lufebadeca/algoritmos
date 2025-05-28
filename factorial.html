@@ -33,15 +33,21 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h1>Factorial !</h1>
-        <h3>En esta página puedes calcular el factoriald e un número:</h3>
-        <p>El factorial es el resultado de la multiplicación de todos los dígitos de un número</p>
-        <label for="fact">Escribe el número para calcular su factorial:</label>
-        <input type="number" id="fact" name="fact" value="7">
-        <button class="button" onclick="Factorial()">Get factorial!</button>
-        <label for="result-factorial"></label>
-        <p id="result-factorial" class="series-result-p" name="result-factorial">
+    <div class="container-2">
+        <div class="info">
+            <h1>Factorial !</h1>
+            <h3>En esta página puedes calcular el factoriald e un número:</h3>
+            <p>El factorial es el resultado de la multiplicación de todos los dígitos de un número</p>
+            <label for="fact">Escribe el número para calcular su factorial:</label>
+            <input type="number" id="fact" name="fact" value="7">
+            <button class="button" onclick="Factorial()">Get factorial!</button>
+            <label for="result-factorial"></label>
+            <p id="result-factorial" class="series-result-p" name="result-factorial">
+        </div>
+        <div class="series-result">
+            <canvas id="canvas"></canvas>
+        </div>
+        
     </div>
 
     <script src="script.js"></script>

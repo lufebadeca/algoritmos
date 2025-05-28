@@ -300,5 +300,92 @@ function Factorial(){
         resultFactorial.innerHTML += `${accum}</br>`;
     }
 
-    resultFactorial.scrollTo({top: resultFactorial.scrollHeight, behavior: "smooth"})
+    resultFactorial.scrollTo({top: resultFactorial.scrollHeight, behavior: "smooth"});
+
+    plotFactorial(numero);
 }
+
+function plotFactorial(n) {
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const width = canvas.width;
+    const height = canvas.height;
+    ctx.clearRect(0, 0, width, height);
+
+    // Calcular puntos (x, log10(y))
+    let points = [];
+    let accum = 1;
+    for (let i = 1; i <= n; i++) {
+        accum *= i;
+        points.push({
+            x: i,
+            y: Math.log10(accum),
+            label: i === n ? `log₁₀(${accum.toLocaleString()})` : null
+        });
+    }
+
+    const maxX = n;
+    const maxY = Math.max(...points.map(p => p.y));
+    const margin = 40;
+
+    const scaleX = (x) => margin + (x / maxX) * (width - 2 * margin);
+    const scaleY = (y) => height - margin - (y / maxY) * (height - 2 * margin);
+
+    // Dibujar ejes
+    ctx.beginPath();
+    ctx.moveTo(scaleX(1), scaleY(0));
+    ctx.lineTo(scaleX(maxX), scaleY(0)); // eje X
+    ctx.moveTo(scaleX(1), scaleY(0));
+    ctx.lineTo(scaleX(1), scaleY(maxY)); // eje Y
+    ctx.strokeStyle = "#444";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Animación paso a paso
+    let i = 1;
+    const interval = setInterval(() => {
+        if (i >= points.length) {
+            clearInterval(interval);
+        }
+
+        const prev = points[i - 1];
+        const curr = points[i];
+
+        // Dibujar línea
+        if (i >= 1) {
+            ctx.beginPath();
+            ctx.moveTo(scaleX(prev.x), scaleY(prev.y));
+            ctx.lineTo(scaleX(curr.x), scaleY(curr.y));
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // Punto
+        ctx.beginPath();
+        ctx.arc(scaleX(curr.x), scaleY(curr.y), 3, 0, Math.PI * 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+        // Etiqueta para el último punto
+        if (i === points.length - 1 && curr.label) {
+            const text = curr.label;
+            ctx.font = "12px sans-serif";
+            ctx.fillStyle = "red";
+            const textWidth = ctx.measureText(text).width;
+            const xPos = scaleX(curr.x);
+            const yPos = scaleY(curr.y) - 10;
+
+            // Si la etiqueta se va del canvas, desplázala a la izquierda
+            const adjustedX = (xPos + textWidth + 5 > width)
+                ? xPos - textWidth - 5
+                : xPos + 5;
+
+            ctx.fillText(text, adjustedX, yPos);
+        }
+
+        i++;
+    }, 100);
+}
+
